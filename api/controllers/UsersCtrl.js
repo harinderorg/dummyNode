@@ -3,6 +3,9 @@
 var mongoose = require("mongoose"),
   User = mongoose.model("User");
 
-Export.signup = (req, res) => {
-  res.send({ status: 1 });
+exports.signup = (req, res) => {
+  var new_user = new User(res.body);
+  new_user.save(function (err, user) {
+    res.send({ status: 1 });
+  });
 };
